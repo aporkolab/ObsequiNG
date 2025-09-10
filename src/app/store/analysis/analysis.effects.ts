@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of, timer } from 'rxjs';
@@ -21,17 +21,18 @@ import { selectAnalysisState } from './analysis.selectors';
 
 @Injectable()
 export class AnalysisEffects {
-
-  constructor(
-    private actions$: Actions,
-    private store: Store<AppState>,
-    private verseAnalysisService: VerseAnalysisService,
-    private notificationService: NotificationService
-  ) {}
+  private actions$ = inject(Actions);
+  private store = inject(Store<AppState>);
+  private verseAnalysisService = inject(VerseAnalysisService);
+  private notificationService = inject(NotificationService);
 
   // Main analysis effect
-  performAnalysis$ = createEffect(() =>
-    this.actions$.pipe(
+  performAnalysis$ = createEffect(() => {
+    if (!this.actions$) {
+      console.error('Actions service is not available');
+      return of();
+    }
+    return this.actions$.pipe(
       ofType(AnalysisActions.startAnalysis),
       debounceTime(300), // Debounce rapid analysis requests
       switchMap(({ text, options }) => {
@@ -50,8 +51,8 @@ export class AnalysisEffects {
           })
         );
       })
-    )
-  );
+    );
+  });
 
   // Auto-save to history after successful analysis
   autoSaveToHistory$ = createEffect(() =>
