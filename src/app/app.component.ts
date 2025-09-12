@@ -9,7 +9,7 @@ import { RouterOutlet, RouterModule } from '@angular/router';
   template: `
     <nav class="navbar">
       <div class="nav-container">
-        <a routerLink="/home" class="nav-brand">Cadentis</a>
+        <a routerLink="/home" class="nav-brand">ObsequiNG</a>
         <div class="nav-links">
           <a routerLink="/home" routerLinkActive="active">Home</a>
           <a routerLink="/security" routerLinkActive="active">Security</a>
@@ -73,5 +73,5 @@ import { RouterOutlet, RouterModule } from '@angular/router';
   `]
 })
 export class AppComponent {
-  title = 'Cadentis';
+  title = 'ObsequiNG';
 }

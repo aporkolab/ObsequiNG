@@ -1,6 +1,6 @@
-# 🚀 Cadentis - Enterprise Angular Application
+# 🚀 ObsequiNG - Enterprise Angular Application
 
-**Cadentis** is a comprehensive, enterprise-grade Angular application showcasing modern web development best practices, advanced security features, performance optimization, and complete DevOps integration. This application serves as a reference implementation for senior-level Angular development with production-ready features.
+**ObsequiNG** is a comprehensive, enterprise-grade Angular application showcasing modern web development best practices, advanced security features, performance optimization, and complete DevOps integration. This application serves as a reference implementation for senior-level Angular development with production-ready features.
 
 [![Angular](https://img.shields.io/badge/Angular-17+-red.svg)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
@@ -12,7 +12,7 @@
 
 A live, production-ready version of this application is automatically deployed via GitHub Actions.
 
-**[🔗 Access the Live Demo Here](https://aporkolab.github.io/cadentis/)**
+**[🔗 Access the Live Demo Here](https://aporkolab.github.io/ObsequiNG/)**
 
 *(Note: The deployment is updated automatically on every push to the `main` branch with full CI/CD pipeline.)*
 
@@ -20,7 +20,7 @@ A live, production-ready version of this application is automatically deployed v
 
 ## 🎆 Enterprise Features Overview
 
-Cadentis is built with **7 comprehensive modules** that demonstrate enterprise-level Angular development:
+ObsequiNG is built with **7 comprehensive modules** that demonstrate enterprise-level Angular development:
 
 ### 🔐 1. Security Excellence
 - **Advanced Threat Protection**: XSS, CSRF, injection attack prevention
@@ -73,7 +73,7 @@ Cadentis is built with **7 comprehensive modules** that demonstrate enterprise-l
 
 ## 🏢 Architecture Overview
 
-Cadentis follows a **modern, scalable, enterprise-grade architecture** with cutting-edge Angular patterns:
+ObsequiNG follows a **modern, scalable, enterprise-grade architecture** with cutting-edge Angular patterns:
 
 ### 🎆 **Core Architecture Principles:**
 - **Standalone Components**: Modern Angular 17+ architecture
@@ -144,8 +144,8 @@ src/app/
 
 1.  **💾 Clone the repository:**
     ```bash
-    git clone https://github.com/APorkolab/cadentis.git
-    cd cadentis
+    git clone https://github.com/APorkolab/ObsequiNG.git
+    cd ObsequiNG
     ```
 
 2.  **📦 Install dependencies:**
@@ -323,9 +323,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **📈 Analytics Dashboard**: Real-time application metrics
 
 ### **📧 Support & Contact:**
-- **💬 Issues**: [GitHub Issues](https://github.com/APorkolab/cadentis/issues)
-- **📈 Feature Requests**: [GitHub Discussions](https://github.com/APorkolab/cadentis/discussions)
-- **📚 Wiki**: [Project Wiki](https://github.com/APorkolab/cadentis/wiki)
+- **💬 Issues**: [GitHub Issues](https://github.com/APorkolab/ObsequiNG/issues)
+- **📈 Feature Requests**: [GitHub Discussions](https://github.com/APorkolab/ObsequiNG/discussions)
+- **📚 Wiki**: [Project Wiki](https://github.com/APorkolab/ObsequiNG/wiki)
 
 ### **🎆 Acknowledgments:**
 - Angular Team for the amazing framework

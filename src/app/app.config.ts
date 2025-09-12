@@ -9,8 +9,6 @@ import { provideRouterStore } from '@ngrx/router-store';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { GlobalErrorHandler } from './core/global-error-handler';
-import { analysisReducer } from './store/analysis/analysis.reducer';
-import { AnalysisEffects } from './store/analysis/analysis.effects';
 import { metaReducers } from './store/app.state';
 import { httpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
@@ -37,9 +35,7 @@ export const appConfig: ApplicationConfig = {
     
     // NgRx Store
     provideStore(
-      {
-        analysis: analysisReducer
-      },
+      {},
       {
         runtimeChecks: {
           strictStateImmutability: true,
@@ -51,7 +47,7 @@ export const appConfig: ApplicationConfig = {
     ),
     
     // NgRx Effects
-    provideEffects([AnalysisEffects]),
+    provideEffects([]),
     
     // NgRx Router Store
     provideRouterStore(),

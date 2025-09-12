@@ -1,6 +1,6 @@
-# 🤝 Contributing to Cadentis
+# 🤝 Contributing to ObsequiNG
 
-Welcome to the Cadentis project! We're excited to have you contribute to our enterprise-grade Angular application. This document provides comprehensive guidelines for contributing to the project.
+Welcome to the ObsequiNG project! We're excited to have you contribute to our enterprise-grade Angular application. This document provides comprehensive guidelines for contributing to the project.
 
 ## 📋 Table of Contents
 
@@ -36,13 +36,13 @@ Before contributing, ensure you have:
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/cadentis.git
-   cd cadentis
+   git clone https://github.com/YOUR_USERNAME/ObsequiNG.git
+   cd ObsequiNG
    ```
 
 3. **Add upstream remote**:
    ```bash
-   git remote add upstream https://github.com/APorkolab/cadentis.git
+   git remote add upstream https://github.com/APorkolab/ObsequiNG.git
    ```
 
 4. **Install dependencies**:

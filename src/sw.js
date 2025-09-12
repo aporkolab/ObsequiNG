@@ -1,5 +1,5 @@
-// Service Worker for Cadentis PWA
-const CACHE_NAME = 'cadentis-v1.0.0';
+// Service Worker for ObsequiNG PWA
+const CACHE_NAME = 'obsequing-v1.0.0';
 const OFFLINE_URL = '/offline.html';
 
 // Resources to cache on install
@@ -147,7 +147,7 @@ self.addEventListener('push', (event) => {
   };
   
   event.waitUntil(
-    self.registration.showNotification('Cadentis', options)
+    self.registration.showNotification('ObsequiNG', options)
   );
 });
 

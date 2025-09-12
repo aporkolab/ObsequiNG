@@ -1,8 +1,0 @@
-<div *ngFor="let line of verseLines; let i = index" class="verse-line">
-	<span class="pattern">{{ line.meterPattern }}</span>
-	<span class="rhyme">Rhyme Pattern:{{ rhymePattern[i] || '' }}</span>
-	<span class="syllables">× {{ line.syllableCount }}</span>
-	<span class="verse-type"> {{ line.verseType }}</span>
-	<span class="rhyme">{{ rhymePattern[i] || '' }}</span>
-	<span class="text">|{{ line.text }}</span>
-</div>

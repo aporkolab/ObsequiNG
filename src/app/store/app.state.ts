@@ -2,19 +2,6 @@ import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 
 // Feature state interfaces
-export interface AnalysisState {
-  currentText: string;
-  results: any[];
-  isLoading: boolean;
-  error: string | null;
-  history: any[];
-  cache: { [key: string]: any };
-  performance: {
-    lastAnalysisTime: number;
-    averageProcessingTime: number;
-    totalAnalyses: number;
-  };
-}
 
 export interface UiState {
   theme: 'light' | 'dark' | 'auto';
@@ -29,41 +16,24 @@ export interface UiState {
 }
 
 export interface UserPreferencesState {
-  analysisSettings: {
+  appSettings: {
     autoSave: boolean;
-    showAdvancedMetrics: boolean;
-    enableWebWorker: boolean;
+    enableNotifications: boolean;
     maxHistoryItems: number;
   };
   displaySettings: {
-    showRhymeScheme: boolean;
-    showStressPattern: boolean;
-    highlightSubstitutions: boolean;
     colorScheme: string;
+    compactView: boolean;
   };
 }
 
 // Root state interface
 export interface AppState {
-  analysis: AnalysisState;
   ui: UiState;
   userPreferences: UserPreferencesState;
 }
 
 // Initial states
-export const initialAnalysisState: AnalysisState = {
-  currentText: '',
-  results: [],
-  isLoading: false,
-  error: null,
-  history: [],
-  cache: {},
-  performance: {
-    lastAnalysisTime: 0,
-    averageProcessingTime: 0,
-    totalAnalyses: 0
-  }
-};
 
 export const initialUiState: UiState = {
   theme: 'auto',
@@ -78,17 +48,14 @@ export const initialUiState: UiState = {
 };
 
 export const initialUserPreferencesState: UserPreferencesState = {
-  analysisSettings: {
+  appSettings: {
     autoSave: true,
-    showAdvancedMetrics: false,
-    enableWebWorker: true,
+    enableNotifications: true,
     maxHistoryItems: 50
   },
   displaySettings: {
-    showRhymeScheme: true,
-    showStressPattern: true,
-    highlightSubstitutions: true,
-    colorScheme: 'default'
+    colorScheme: 'default',
+    compactView: false
   }
 };
 
