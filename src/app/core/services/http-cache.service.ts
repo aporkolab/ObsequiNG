@@ -79,7 +79,7 @@ export class HttpCacheService {
     return this.cache.size;
   }
 
-  getStats(): { size: number; entries: Array<{ url: string; age: number; expiresIn: number }> } {
+  getStats(): { size: number; entries: { url: string; age: number; expiresIn: number }[] } {
     const now = Date.now();
     const entries = Array.from(this.cache.values()).map(entry => ({
       url: entry.url,

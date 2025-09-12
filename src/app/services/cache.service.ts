@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, from } from 'rxjs';
-import { map, switchMap, catchError } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
-interface CacheEntry<T = any> {
+interface CacheEntry<T = unknown> {
   key: string;
   data: T;
   timestamp: number;
@@ -61,7 +60,7 @@ export class CacheService {
       const request = indexedDB.open(this.DB_NAME, this.DB_VERSION);
 
       request.onerror = () => {
-        console.warn('IndexedDB initialization failed:', request.error);
+        // IndexedDB initialization failed - fallback to memory-only cache
         reject(request.error);
       };
 
@@ -108,7 +107,7 @@ export class CacheService {
         this.updateStats();
       };
     } catch (error) {
-      console.warn('Failed to load memory cache:', error);
+      // Failed to load memory cache - continue with empty cache
     }
   }
 
@@ -124,7 +123,7 @@ export class CacheService {
     }, 5000);
   }
 
-  public async set<T>(key: string, data: T, ttl: number = this.DEFAULT_TTL, type: string = 'analysis'): Promise<void> {
+  public async set<T>(key: string, data: T, ttl: number = this.DEFAULT_TTL, type = 'analysis'): Promise<void> {
     const now = Date.now();
     const entry: CacheEntry<T> = {
       key,
@@ -324,7 +323,7 @@ export class CacheService {
       .reduce((total, entry) => total + entry.metadata.size, 0);
   }
 
-  private calculateSize(data: any): number {
+  private calculateSize(data: unknown): number {
     try {
       return new TextEncoder().encode(JSON.stringify(data)).length;
     } catch {

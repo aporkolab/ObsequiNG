@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subject, interval, fromEvent } from 'rxjs';
+import { BehaviorSubject, Subject, fromEvent } from 'rxjs';
 import { takeUntil, throttleTime, debounceTime } from 'rxjs/operators';
 
 export interface UserEvent {
@@ -12,7 +12,7 @@ export interface UserEvent {
   timestamp: Date;
   userId?: string;
   sessionId: string;
-  metadata?: { [key: string]: any };
+  metadata?: Record<string, any>;
   source: string;
   device?: DeviceInfo;
   location?: GeolocationInfo;
@@ -45,7 +45,7 @@ export interface PerformanceEvent {
   name: string;
   startTime: number;
   duration: number;
-  metadata?: { [key: string]: any };
+  metadata?: Record<string, any>;
   timestamp: Date;
 }
 
@@ -57,7 +57,7 @@ export interface ConversionFunnel {
   completedUsers: number;
   conversionRate: number;
   avgCompletionTime: number;
-  dropOffPoints: { [stepId: string]: number };
+  dropOffPoints: Record<string, number>;
 }
 
 export interface FunnelStep {
@@ -76,7 +76,7 @@ export interface UserSegment {
   userCount: number;
   avgSessionDuration: number;
   conversionRate: number;
-  topFeatures: Array<{ name: string; usage: number }>;
+  topFeatures: { name: string; usage: number }[];
 }
 
 export interface SegmentCriteria {
@@ -84,7 +84,7 @@ export interface SegmentCriteria {
   location?: string;
   userType?: 'new' | 'returning' | 'power_user';
   activityLevel?: 'low' | 'medium' | 'high';
-  featureUsage?: { [feature: string]: number };
+  featureUsage?: Record<string, number>;
 }
 
 export interface AnalyticsConfig {
@@ -111,9 +111,9 @@ export interface DashboardMetrics {
   pageViews: number;
   uniquePageViews: number;
   conversionRate: number;
-  topPages: Array<{ path: string; views: number; uniqueViews: number }>;
-  topFeatures: Array<{ name: string; usage: number; trend: number }>;
-  userFlow: Array<{ from: string; to: string; count: number }>;
+  topPages: { path: string; views: number; uniqueViews: number }[];
+  topFeatures: { name: string; usage: number; trend: number }[];
+  userFlow: { from: string; to: string; count: number }[];
   realTimeUsers: number;
 }
 
@@ -160,7 +160,7 @@ export class AnalyticsService implements OnDestroy {
     action: string, 
     label?: string, 
     value?: number,
-    metadata?: { [key: string]: any }
+    metadata?: Record<string, any>
   ): void {
     if (!this.config.enabled || !this.shouldSample()) return;
     
@@ -250,7 +250,7 @@ export class AnalyticsService implements OnDestroy {
   }
   
   // User Identification
-  identifyUser(userId: string, traits?: { [key: string]: any }): void {
+  identifyUser(userId: string, traits?: Record<string, any>): void {
     this.userId = userId;
     
     this.trackEvent('user', 'identify', userId, undefined, traits);
@@ -581,7 +581,7 @@ export class AnalyticsService implements OnDestroy {
     this.metricsSubject.next(metrics);
   }
   
-  private getTopPages(pageViews: UserEvent[]): Array<{ path: string; views: number; uniqueViews: number }> {
+  private getTopPages(pageViews: UserEvent[]): { path: string; views: number; uniqueViews: number }[] {
     const pageStats = new Map<string, { views: number; uniqueViews: Set<string> }>();
     
     pageViews.forEach(event => {
@@ -607,7 +607,7 @@ export class AnalyticsService implements OnDestroy {
       .slice(0, 10);
   }
   
-  private getTopFeatures(events: UserEvent[]): Array<{ name: string; usage: number; trend: number }> {
+  private getTopFeatures(events: UserEvent[]): { name: string; usage: number; trend: number }[] {
     const featureEvents = events.filter(event => event.category === 'feature');
     const featureStats = new Map<string, number>();
     

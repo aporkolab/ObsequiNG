@@ -183,7 +183,7 @@ export class EncryptionService {
   }
 
   // Generate secure random string
-  generateRandomString(length: number, charset: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'): string {
+  generateRandomString(length: number, charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'): string {
     const randomBytes = this.generateRandomBytes(length);
     return Array.from(randomBytes, byte => charset[byte % charset.length]).join('');
   }

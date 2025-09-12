@@ -8,7 +8,7 @@ export interface Notification {
   type: 'success' | 'error' | 'warning' | 'info';
   duration?: number;
   timestamp: number;
-  actions?: Array<{ text: string; action: () => void }>;
+  actions?: { text: string; action: () => void }[];
 }
 
 @Injectable({

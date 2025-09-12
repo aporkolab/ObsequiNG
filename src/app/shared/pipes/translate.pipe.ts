@@ -24,7 +24,7 @@ export class TranslatePipe implements PipeTransform, OnDestroy {
     });
   }
 
-  transform(key: string, params?: { [key: string]: any }, namespace?: string): string {
+  transform(key: string, params?: Record<string, any>, namespace?: string): string {
     // Check if we can use cached result
     if (key === this.lastKey && 
         JSON.stringify(params) === JSON.stringify(this.lastParams) && 

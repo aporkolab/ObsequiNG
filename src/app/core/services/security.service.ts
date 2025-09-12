@@ -38,8 +38,8 @@ export interface SecurityThreat {
 export interface SecurityMetrics {
   totalThreats: number;
   blockedThreats: number;
-  threatsByType: { [key: string]: number };
-  threatsBySeverity: { [key: string]: number };
+  threatsByType: Record<string, number>;
+  threatsBySeverity: Record<string, number>;
   lastThreatTime?: Date;
   securityScore: number; // 0-100
 }
@@ -208,7 +208,7 @@ export class SecurityService implements OnDestroy {
   }
   
   // Rate Limiting
-  checkRateLimit(identifier: string = 'default'): boolean {
+  checkRateLimit(identifier = 'default'): boolean {
     if (!this.config.rateLimit.enabled) return true;
     
     const now = Date.now();
@@ -593,8 +593,8 @@ export class SecurityService implements OnDestroy {
       (now.getTime() - threat.timestamp.getTime()) < 86400000 // 24 hours
     );
     
-    const threatsByType: { [key: string]: number } = {};
-    const threatsBySeverity: { [key: string]: number } = {};
+    const threatsByType: Record<string, number> = {};
+    const threatsBySeverity: Record<string, number> = {};
     
     recentThreats.forEach(threat => {
       threatsByType[threat.type] = (threatsByType[threat.type] || 0) + 1;

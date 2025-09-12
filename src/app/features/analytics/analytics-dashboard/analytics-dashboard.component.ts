@@ -42,7 +42,7 @@ export class AnalyticsDashboardComponent implements OnInit, OnDestroy {
     { key: 'source', label: 'Traffic Source', options: ['direct', 'search', 'social', 'referral'] }
   ];
   
-  activeFilters: { [key: string]: string[] } = {};
+  activeFilters: Record<string, string[]> = {};
   
   // Export Options
   exportFormats = ['json', 'csv', 'pdf'];
@@ -54,7 +54,7 @@ export class AnalyticsDashboardComponent implements OnInit, OnDestroy {
     pageViews: 0,
     conversionRate: 0,
     avgSessionDuration: 0,
-    topPages: [] as Array<{ path: string; views: number; uniqueViews: number }>,
+    topPages: [] as { path: string; views: number; uniqueViews: number }[],
     recentEvents: [] as UserEvent[]
   };
   
@@ -435,7 +435,7 @@ export class AnalyticsDashboardComponent implements OnInit, OnDestroy {
   }
   
   getEventTypeIcon(type: string): string {
-    const icons: { [key: string]: string } = {
+    const icons: Record<string, string> = {
       'page_view': '👁️',
       'click': '👆',
       'form_submit': '📝',

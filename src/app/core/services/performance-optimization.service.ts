@@ -299,13 +299,13 @@ export class PerformanceOptimizationService implements OnDestroy {
   analyzeBundleSize(): { 
     totalScripts: number; 
     totalSize: number; 
-    largestScripts: Array<{ name: string; size: number }> 
+    largestScripts: { name: string; size: number }[] 
   } {
     const scripts = Array.from(document.querySelectorAll('script[src]'));
     const analysis = {
       totalScripts: scripts.length,
       totalSize: 0,
-      largestScripts: [] as Array<{ name: string; size: number }>
+      largestScripts: [] as { name: string; size: number }[]
     };
     
     // This would need actual network timing data
@@ -342,7 +342,7 @@ export class PerformanceOptimizationService implements OnDestroy {
   }
 
   // Critical resource hints
-  addResourceHints(resources: Array<{ href: string; as: string; type?: string }>): void {
+  addResourceHints(resources: { href: string; as: string; type?: string }[]): void {
     resources.forEach(resource => {
       const link = document.createElement('link');
       link.rel = 'preload';

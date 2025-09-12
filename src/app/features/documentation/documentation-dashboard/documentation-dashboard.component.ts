@@ -70,10 +70,10 @@ export class DocumentationDashboardComponent implements OnInit, OnDestroy {
   selectedExportFormat = 'json';
   
   // Deployment Execution
-  deploymentSteps: Array<{ step: number; status: string; message: string }> = [];
+  deploymentSteps: { step: number; status: string; message: string }[] = [];
   
   // Pipeline Execution
-  pipelineStages: Array<{ stage: string; status: string; message: string }> = [];
+  pipelineStages: { stage: string; status: string; message: string }[] = [];
   
   constructor(private documentationService: DocumentationService) {}
   

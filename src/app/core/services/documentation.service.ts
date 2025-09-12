@@ -65,12 +65,12 @@ export interface APIExample {
   request: {
     method: string;
     url: string;
-    headers?: { [key: string]: string };
+    headers?: Record<string, string>;
     body?: any;
   };
   response: {
     statusCode: number;
-    headers?: { [key: string]: string };
+    headers?: Record<string, string>;
     body: any;
   };
 }

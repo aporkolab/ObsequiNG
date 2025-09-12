@@ -1,6 +1,6 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
-import { BehaviorSubject, fromEvent, merge, Observable } from 'rxjs';
-import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject, fromEvent } from 'rxjs';
+import { map, distinctUntilChanged } from 'rxjs/operators';
 
 export interface AccessibilitySettings {
   highContrast: boolean;
@@ -348,7 +348,7 @@ export class AccessibilityService {
     const tagName = element.tagName.toLowerCase();
     const role = element.getAttribute('role');
     const ariaLabel = element.getAttribute('aria-label');
-    const ariaLabelledBy = element.getAttribute('aria-labelledby');
+    // const ariaLabelledBy = element.getAttribute('aria-labelledby');
     const label = element.querySelector('label')?.textContent?.trim() || 
                  document.querySelector(`label[for="${element.id}"]`)?.textContent?.trim();
     
@@ -401,7 +401,7 @@ export class AccessibilityService {
     // This is a simplified version
   }
 
-  private handleEscapeKey(event: KeyboardEvent): void {
+  private handleEscapeKey(_event: KeyboardEvent): void {
     // Close modals, dropdowns, etc.
     const openModal = document.querySelector('[role="dialog"][aria-hidden="false"]');
     if (openModal) {
@@ -421,7 +421,7 @@ export class AccessibilityService {
     this.announce('Keyboard help: Use Tab to navigate, Enter to activate, Escape to close dialogs, Alt+S for skip links');
   }
 
-  private calculateContrastRatio(color1: string, color2: string): number {
+  private calculateContrastRatio(_color1: string, _color2: string): number {
     // Simplified contrast ratio calculation
     // In a real implementation, you'd parse RGB values and use the WCAG formula
     return 4.5; // Placeholder

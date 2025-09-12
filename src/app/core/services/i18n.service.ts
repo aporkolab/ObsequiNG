@@ -26,9 +26,7 @@ export interface TranslationNamespace {
   [key: string]: string | TranslationNamespace;
 }
 
-export interface TranslationData {
-  [namespace: string]: TranslationNamespace;
-}
+export type TranslationData = Record<string, TranslationNamespace>;
 
 export interface LocaleFormats {
   date: {
@@ -61,7 +59,7 @@ export interface LocaleFormats {
 })
 export class I18nService implements OnDestroy {
   private destroy$ = new Subject<void>();
-  private translations: Map<string, TranslationData> = new Map();
+  private translations = new Map<string, TranslationData>();
   private fallbackTranslations: TranslationData = {};
   
   private currentLanguageSubject = new BehaviorSubject<string>('en');
@@ -197,7 +195,7 @@ export class I18nService implements OnDestroy {
   }
   
   // Translation methods
-  translate(key: string, params?: { [key: string]: any }, namespace?: string): string {
+  translate(key: string, params?: Record<string, any>, namespace?: string): string {
     const currentTranslations = this.translations.get(this.currentLanguage) || {};
     const fallbackTranslations = this.fallbackTranslations;
     
@@ -218,7 +216,7 @@ export class I18nService implements OnDestroy {
     return translation;
   }
   
-  t(key: string, params?: { [key: string]: any }, namespace?: string): string {
+  t(key: string, params?: Record<string, any>, namespace?: string): string {
     return this.translate(key, params, namespace);
   }
   
@@ -312,7 +310,7 @@ export class I18nService implements OnDestroy {
   }
   
   // Parameter replacement
-  private replaceParams(text: string, params: { [key: string]: any }): string {
+  private replaceParams(text: string, params: Record<string, any>): string {
     return text.replace(/\{\{([^}]+)\}\}/g, (match, key) => {
       const value = params[key.trim()];
       return value !== undefined ? String(value) : match;
@@ -378,7 +376,7 @@ export class I18nService implements OnDestroy {
   
   private async fetchTranslations(languageCode: string): Promise<TranslationData> {
     // Mock implementation - in real app, this would fetch from API or files
-    const mockTranslations: { [key: string]: TranslationData } = {
+    const mockTranslations: Record<string, TranslationData> = {
       en: {
         common: {
           yes: 'Yes',
@@ -445,7 +443,7 @@ export class I18nService implements OnDestroy {
   }
   
   private getDateFormatOptions(format: string): Intl.DateTimeFormatOptions {
-    const options: { [key: string]: Intl.DateTimeFormatOptions } = {
+    const options: Record<string, Intl.DateTimeFormatOptions> = {
       short: { year: 'numeric', month: 'numeric', day: 'numeric' },
       medium: { year: 'numeric', month: 'short', day: 'numeric' },
       long: { year: 'numeric', month: 'long', day: 'numeric' },
@@ -455,7 +453,7 @@ export class I18nService implements OnDestroy {
   }
   
   private getTimeFormatOptions(format: string): Intl.DateTimeFormatOptions {
-    const options: { [key: string]: Intl.DateTimeFormatOptions } = {
+    const options: Record<string, Intl.DateTimeFormatOptions> = {
       short: { hour: 'numeric', minute: 'numeric' },
       medium: { hour: 'numeric', minute: 'numeric', second: 'numeric' },
       long: { hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' },

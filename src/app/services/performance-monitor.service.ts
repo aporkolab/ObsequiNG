@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, fromEvent } from 'rxjs';
-import { throttleTime, map } from 'rxjs/operators';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export interface PerformanceMetrics {
   memoryUsage: {
@@ -42,7 +41,7 @@ interface TaskMetrics {
 @Injectable({
   providedIn: 'root'
 })
-export class PerformanceMonitorService {
+export class PerformanceMonitorService implements OnDestroy {
   private metricsSubject = new BehaviorSubject<PerformanceMetrics | null>(null);
   private activeTasks = new Map<string, TaskMetrics>();
   private performanceHistory: PerformanceMetrics[] = [];
@@ -69,7 +68,7 @@ export class PerformanceMonitorService {
       try {
         this.performanceObserver.observe({ entryTypes: ['measure', 'navigation', 'resource'] });
       } catch (error) {
-        console.warn('Performance Observer not fully supported:', error);
+        // Performance Observer not fully supported - using fallback methods
       }
     }
   }
