@@ -194,7 +194,11 @@
             *ngFor="let step of funnel.steps; let i = index"
             class="funnel-step"
             [style.width.%]="step.completionRate * 100"
-            (click)="onFunnelStepClick(funnel, step)">
+            tabindex="0"
+            role="button"
+            (click)="onFunnelStepClick(funnel, step)"
+            (keydown.enter)="onFunnelStepClick(funnel, step)"
+            (keydown.space)="onFunnelStepClick(funnel, step)">
             <div class="step-header">
               <span class="step-name">{{ step.name }}</span>
               <span class="step-rate">{{ formatPercentage(step.completionRate) }}</span>
@@ -215,7 +219,11 @@
         <div 
           *ngFor="let segment of userSegments; let i = index"
           class="segment-card"
-          (click)="onSegmentClick(segment)">
+          tabindex="0"
+          role="button"
+          (click)="onSegmentClick(segment)"
+          (keydown.enter)="onSegmentClick(segment)"
+          (keydown.space)="onSegmentClick(segment)">
           <div class="segment-header">
             <h3>{{ segment.name }}</h3>
             <span 
