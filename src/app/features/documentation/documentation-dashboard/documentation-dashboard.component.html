@@ -179,7 +179,11 @@
       <div 
         *ngFor="let doc of filteredDocumentation" 
         class="doc-card"
-        (click)="selectDoc(doc)">
+        tabindex="0"
+        role="button"
+        (click)="selectDoc(doc)"
+        (keydown.enter)="selectDoc(doc)"
+        (keydown.space)="selectDoc(doc);">
         <div class="doc-header">
           <div class="doc-title">
             <span class="priority-icon">{{ getPriorityIcon(doc.priority) }}</span>
@@ -236,7 +240,11 @@
       <div 
         *ngFor="let endpoint of apiEndpoints" 
         class="api-card"
-        (click)="selectAPI(endpoint)">
+        tabindex="0"
+        role="button"
+        (click)="selectAPI(endpoint)"
+        (keydown.enter)="selectAPI(endpoint)"
+        (keydown.space)="selectAPI(endpoint);">
         <div class="api-header">
           <span 
             class="http-method" 
@@ -273,7 +281,11 @@
       <div 
         *ngFor="let guide of deploymentGuides" 
         class="deployment-card"
-        (click)="selectDeployment(guide)">
+        tabindex="0"
+        role="button"
+        (click)="selectDeployment(guide)"
+        (keydown.enter)="selectDeployment(guide)"
+        (keydown.space)="selectDeployment(guide);">
         <div class="deployment-header">
           <div class="deployment-title">
             <span class="env-icon">
@@ -452,7 +464,11 @@
       <div 
         *ngFor="let pipeline of cicdPipelines" 
         class="pipeline-card"
-        (click)="selectPipeline(pipeline)">
+        tabindex="0"
+        role="button"
+        (click)="selectPipeline(pipeline)"
+        (keydown.enter)="selectPipeline(pipeline)"
+        (keydown.space)="selectPipeline(pipeline);">
         <div class="pipeline-header">
           <div class="pipeline-title">{{ pipeline.name }}</div>
           <span 
