@@ -5,9 +5,15 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "build:stats": "ng build --stats-json --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "analyze": "npx webpack-bundle-analyzer dist/obsequing/stats.json",
+    "serve:prod": "npx http-server dist/obsequing -p 8080"
   },
   "private": true,
   "dependencies": {

@@ -9,7 +9,6 @@ import { provideRouterStore } from '@ngrx/router-store';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { GlobalErrorHandler } from './core/global-error-handler';
-import { metaReducers } from './store/app.state';
 import { httpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { cacheInterceptor } from './core/interceptors/cache.interceptor';

@@ -1,4 +1,19 @@
-<div class="app-container">
-  <h1>{{ title }}</h1>
-  <router-outlet></router-outlet>
-</div>
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/home" class="nav-brand">{{ title }}</a>
+    <div class="nav-links">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/security" routerLinkActive="active">Security</a>
+      <a routerLink="/testing" routerLinkActive="active">Testing</a>
+      <a routerLink="/pwa" routerLinkActive="active">PWA</a>
+      <a routerLink="/analytics" routerLinkActive="active">Analytics</a>
+      <a routerLink="/documentation" routerLinkActive="active">Docs & DevOps</a>
+    </div>
+  </div>
+</nav>
+<main class="main-content">
+  <div class="app-container">
+    <h1>{{ title }}</h1>
+    <router-outlet></router-outlet>
+  </div>
+</main>

@@ -1,13 +1,19 @@
-import { ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { MetaReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 
 // Feature state interfaces
+export interface AppNotification {
+  id: string;
+  message: string;
+  type: 'info' | 'warning' | 'error' | 'success';
+  timestamp: number;
+}
 
 export interface UiState {
   theme: 'light' | 'dark' | 'auto';
   language: string;
   sidebarCollapsed: boolean;
-  notifications: any[];
+  notifications: AppNotification[];
   accessibility: {
     highContrast: boolean;
     reducedMotion: boolean;
