@@ -8,11 +8,9 @@
 [![Security](https://img.shields.io/badge/Security-Hardened-green.svg)]()
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-blue.svg)]()
 
-### 🌟 Live Demo
 
 A live, production-ready version of this application is automatically deployed via GitHub Actions.
 
-**[🔗 Access the Live Demo Here](https://aporkolab.github.io/ObsequiNG/)**
 
 *(Note: The deployment is updated automatically on every push to the `main` branch with full CI/CD pipeline.)*
 
